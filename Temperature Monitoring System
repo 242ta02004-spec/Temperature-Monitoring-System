@@ -1,0 +1,74 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int n;
+    double temperature;
+    double totalTemperature = 0.0;
+    double averageTemperature;
+
+    cout << "====================================\n";
+    cout << "     TEMPERATURE MONITORING SYSTEM\n";
+    cout << "====================================\n";
+
+    cout << "Enter number of readings: ";
+    cin >> n;
+
+    if (n <= 0)
+    {
+        cout << "Invalid number of readings.\n";
+        return 0;
+    }
+
+    // Get temperature readings
+    for (int i = 1; i <= n; i++)
+    {
+        cout << "Enter temperature reading "
+             << i << " (°C): ";
+
+        cin >> temperature;
+
+        totalTemperature += temperature;
+    }
+
+    // Calculate average temperature
+    averageTemperature = totalTemperature / n;
+
+    cout << fixed << setprecision(2);
+
+    cout << "\n====================================\n";
+    cout << "       TEMPERATURE RESULT\n";
+    cout << "====================================\n";
+
+    cout << "Total Temperature   : "
+         << totalTemperature << " °C\n";
+
+    cout << "Average Temperature : "
+         << averageTemperature << " °C\n";
+
+    // Temperature status
+    cout << "Status              : ";
+
+    if (averageTemperature < 10)
+    {
+        cout << "COLD\n";
+    }
+    else if (averageTemperature <= 30)
+    {
+        cout << "NORMAL\n";
+    }
+    else if (averageTemperature <= 40)
+    {
+        cout << "HIGH\n";
+    }
+    else
+    {
+        cout << "VERY HIGH - WARNING!\n";
+    }
+
+    cout << "====================================\n";
+
+    return 0;
+}
